@@ -1,0 +1,4 @@
+[Project]
+Name=EcTest
+Manager=KDevCMakeManager
+VersionControl=kdevgit

@@ -1,0 +1,544 @@
+Full command line: -f "eni_1ELMO.xml"-i8254x 1 1 -perf 
+
+000002 : Run demo now with cycle time 1000 usec
+000002 : Using AuxClock
+000002 : Calibrate tsc measurement... done: 2695 MHz
+003003 : ==========================
+003003 : Initialize EtherCAT Master
+003003 : ==========================
+003003 : EC-Master V2.9.1.06 (Protected) for Linux_x64 Copyright acontis technologies GmbH @ 2016
+003004 : OsGetLinkLayerRegFunc: try to load '/home/mgehrig2/git_repos/EtherCAT/EcTest/build/libemllI8254x.so'
+003005 : PCI: device 00:19.0 found
+003607 : Log out every 250 cycle
+003607 : my Value 1:
+003607 : 0
+003607 : my Value 2:
+003607 : 0
+003620 : Unlicensed version, stop sending ethernet frames after 60 minutes!
+003657 : Bus scan successful - 1 slaves found
+003676 : 1 identical messages skipped
+003676 : ******************************************************************************
+003676 : Slave ID............: 0x00000000
+003676 : Bus Index...........: 0
+003676 : Bus AutoInc Address.: 0x0000
+003676 : Bus Station Address.: 0x03e9 (1001)
+003676 : Bus Alias Address...: 0x0000 (   0)
+003676 : Vendor ID...........: 0x0000009A = Elmo Motion Control Ltd.
+003676 : Product Code........: 0x00030924 = Unknown
+003676 : Revision............: 0x00010420   Serial Number: 17020826
+003676 : ESC Type............: Beckhoff ET1100 (0x11)  Revision: 0  Build: 3
+003676 : Connection at Port A: yes (to 0x00010000)
+003676 : Connection at Port D: no  (to 0xFFFFFFFF)
+003676 : Connection at Port B: no  (to 0xFFFFFFFF)
+003676 : Connection at Port C: no  (to 0xFFFFFFFF)
+003676 : Line Crossed........: no 
+003676 : Cfg Station Address.: 0x03e9 (1001)
+003676 : PD IN    Byte.Bit offset: 0.0   Size: 80 bits
+003676 : PD OUT   Byte.Bit offset: 0.0   Size: 80 bits
+003676 : EtherCAT network adapter MAC: EC-F4-BB-34-B6-E7
+
+003676 : =====================
+003676 : Start EtherCAT Master
+003676 : =====================
+003681 : Master state changed from <UNKNOWN> to <INIT>
+003681 : prepare
+003715 : Master state changed from <INIT> to <PREOP>
+003857 : Log out every 250 cycle
+003857 : my Value 1:
+003857 : 0
+003857 : my Value 2:
+003857 : 0
+004107 : Log out every 250 cycle
+004107 : my Value 1:
+004107 : 0
+004107 : my Value 2:
+004107 : 0
+004357 : Log out every 250 cycle
+004357 : my Value 1:
+004357 : 0
+004357 : my Value 2:
+004357 : 0
+004607 : Log out every 250 cycle
+004607 : my Value 1:
+004607 : 0
+004607 : my Value 2:
+004607 : 0
+004857 : Log out every 250 cycle
+004857 : my Value 1:
+004857 : 0
+004857 : my Value 2:
+004857 : 0
+005107 : Log out every 250 cycle
+005107 : my Value 1:
+005107 : 0
+005107 : my Value 2:
+005107 : 0
+005357 : Log out every 250 cycle
+005357 : my Value 1:
+005357 : 0
+005357 : my Value 2:
+005357 : 0
+005607 : Log out every 250 cycle
+005607 : my Value 1:
+005607 : 0
+005607 : my Value 2:
+005607 : 0
+005857 : Log out every 250 cycle
+005857 : my Value 1:
+005857 : 0
+005857 : my Value 2:
+005857 : 0
+006107 : Log out every 250 cycle
+006107 : my Value 1:
+006107 : 0
+006107 : my Value 2:
+006107 : 0
+006357 : Log out every 250 cycle
+006357 : my Value 1:
+006357 : 0
+006357 : my Value 2:
+006357 : 0
+006607 : Log out every 250 cycle
+006607 : my Value 1:
+006607 : 0
+006607 : my Value 2:
+006607 : 0
+006857 : Log out every 250 cycle
+006857 : my Value 1:
+006857 : 0
+006857 : my Value 2:
+006857 : 0
+007107 : Log out every 250 cycle
+007107 : my Value 1:
+007107 : 0
+007107 : my Value 2:
+007107 : 0
+007357 : Log out every 250 cycle
+007357 : my Value 1:
+007357 : 0
+007357 : my Value 2:
+007357 : 0
+007607 : Log out every 250 cycle
+007607 : my Value 1:
+007607 : 0
+007607 : my Value 2:
+007607 : 0
+007857 : Log out every 250 cycle
+007857 : my Value 1:
+007857 : 0
+007857 : my Value 2:
+007857 : 0
+008107 : Log out every 250 cycle
+008107 : my Value 1:
+008107 : 0
+008107 : my Value 2:
+008107 : 0
+008357 : Log out every 250 cycle
+008357 : my Value 1:
+008357 : 0
+008357 : my Value 2:
+008357 : 0
+008607 : Log out every 250 cycle
+008607 : my Value 1:
+008607 : 0
+008607 : my Value 2:
+008607 : 0
+008857 : Log out every 250 cycle
+008857 : my Value 1:
+008857 : 0
+008857 : my Value 2:
+008857 : 0
+009107 : Log out every 250 cycle
+009107 : my Value 1:
+009107 : 0
+009107 : my Value 2:
+009107 : 0
+009357 : Log out every 250 cycle
+009357 : my Value 1:
+009357 : 0
+009357 : my Value 2:
+009357 : 0
+009607 : Log out every 250 cycle
+009607 : my Value 1:
+009607 : 0
+009607 : my Value 2:
+009607 : 0
+009857 : Log out every 250 cycle
+009857 : my Value 1:
+009857 : 0
+009857 : my Value 2:
+009857 : 0
+010107 : Log out every 250 cycle
+010107 : my Value 1:
+010107 : 0
+010107 : my Value 2:
+010107 : 0
+010357 : Log out every 250 cycle
+010357 : my Value 1:
+010357 : 0
+010357 : my Value 2:
+010357 : 0
+010607 : Log out every 250 cycle
+010607 : my Value 1:
+010607 : 0
+010607 : my Value 2:
+010607 : 0
+010857 : Log out every 250 cycle
+010857 : my Value 1:
+010857 : 0
+010857 : my Value 2:
+010857 : 0
+010885 : DCM in sync Cur="  18723", Avg=" -98621", Max="-478114"
+010938 : Cyclic command WKC error on LRW - Address: 0x10000000 - WKC act/set=1/3
+010938 : Master state changed from <PREOP> to <SAFEOP>
+010980 : Master state changed from <SAFEOP> to <OP>
+010980 : 
+010980 : Job times during startup <INIT> to <OP>:
+010980 : ================================================================
+010980 : PerfMsmt 'JOB_ProcessAllRxFrames' (avg/max) [usec]:    8.6/ 26.6
+010980 : PerfMsmt 'JOB_SendAllCycFrames  ' (avg/max) [usec]:    4.2/ 12.5
+010980 : PerfMsmt 'JOB_MasterTimer       ' (avg/max) [usec]:    5.0/ 28.7
+010980 : PerfMsmt 'JOB_SendAcycFrames    ' (avg/max) [usec]:    1.1/ 18.1
+010980 : PerfMsmt 'Cycle Time            ' (avg/max) [usec]:  999.7/1071.8
+010980 : PerfMsmt 'myAppWorkPd           ' (avg/max) [usec]:    0.3/ 10.1
+010980 : PerfMsmt 'Write DCM logfile     ' (avg/max) [usec]:    1.1/ 10.3
+010980 : 
+010980 : DCM during startup (<INIT> to <OP>)
+010980 : DCM Diff(ns): Cur=  13967, Avg= -96272, Max=-478114
+011107 : Log out every 250 cycle
+011107 : my Value 1:
+011107 : 333
+011107 : my Value 2:
+011107 : 333
+011357 : Log out every 250 cycle
+011357 : my Value 1:
+011357 : 533
+011357 : my Value 2:
+011357 : 533
+011607 : Log out every 250 cycle
+011607 : my Value 1:
+011607 : 553
+011607 : my Value 2:
+011607 : 553
+011857 : Log out every 250 cycle
+011857 : my Value 1:
+011857 : 935
+011857 : my Value 2:
+011857 : 935
+012107 : Log out every 250 cycle
+012107 : my Value 1:
+012107 : 1386
+012107 : my Value 2:
+012107 : 1386
+012357 : Log out every 250 cycle
+012357 : my Value 1:
+012357 : 1763
+012357 : my Value 2:
+012357 : 1763
+012607 : Log out every 250 cycle
+012607 : my Value 1:
+012607 : 1916
+012607 : my Value 2:
+012607 : 1916
+012857 : Log out every 250 cycle
+012857 : my Value 1:
+012857 : 1900
+012857 : my Value 2:
+012857 : 1900
+012981 : ================================================================
+012981 : PerfMsmt 'JOB_ProcessAllRxFrames' (avg/max) [usec]:    9.4/ 16.8
+012981 : PerfMsmt 'JOB_SendAllCycFrames  ' (avg/max) [usec]:    5.5/ 10.2
+012981 : PerfMsmt 'JOB_MasterTimer       ' (avg/max) [usec]:    6.5/ 13.7
+012981 : PerfMsmt 'JOB_SendAcycFrames    ' (avg/max) [usec]:    0.7/  5.4
+012981 : PerfMsmt 'Cycle Time            ' (avg/max) [usec]:  999.6/1074.0
+012981 : PerfMsmt 'myAppWorkPd           ' (avg/max) [usec]:    0.4/  5.3
+012981 : PerfMsmt 'Write DCM logfile     ' (avg/max) [usec]:    1.7/  5.2
+013107 : Log out every 250 cycle
+013107 : my Value 1:
+013107 : 1887
+013107 : my Value 2:
+013107 : 1887
+013357 : Log out every 250 cycle
+013357 : my Value 1:
+013357 : 2088
+013357 : my Value 2:
+013357 : 2088
+013607 : Log out every 250 cycle
+013607 : my Value 1:
+013607 : 2276
+013607 : my Value 2:
+013607 : 2276
+013857 : Log out every 250 cycle
+013857 : my Value 1:
+013857 : 2167
+013857 : my Value 2:
+013857 : 2167
+014107 : Log out every 250 cycle
+014107 : my Value 1:
+014107 : 1579
+014107 : my Value 2:
+014107 : 1579
+014357 : Log out every 250 cycle
+014357 : my Value 1:
+014357 : 1377
+014357 : my Value 2:
+014357 : 1377
+014607 : Log out every 250 cycle
+014607 : my Value 1:
+014607 : 1376
+014607 : my Value 2:
+014607 : 1376
+014857 : Log out every 250 cycle
+014857 : my Value 1:
+014857 : 1376
+014857 : my Value 2:
+014857 : 1376
+014981 : ================================================================
+014981 : PerfMsmt 'JOB_ProcessAllRxFrames' (avg/max) [usec]:    8.7/ 18.9
+014981 : PerfMsmt 'JOB_SendAllCycFrames  ' (avg/max) [usec]:    5.3/ 16.2
+014981 : PerfMsmt 'JOB_MasterTimer       ' (avg/max) [usec]:    6.0/ 14.8
+014981 : PerfMsmt 'JOB_SendAcycFrames    ' (avg/max) [usec]:    0.7/  5.4
+014981 : PerfMsmt 'Cycle Time            ' (avg/max) [usec]:  999.7/1074.0
+014981 : PerfMsmt 'myAppWorkPd           ' (avg/max) [usec]:    0.4/  5.3
+014981 : PerfMsmt 'Write DCM logfile     ' (avg/max) [usec]:    1.6/  5.9
+015107 : Log out every 250 cycle
+015107 : my Value 1:
+015107 : 1377
+015107 : my Value 2:
+015107 : 1377
+015357 : Log out every 250 cycle
+015357 : my Value 1:
+015357 : 996
+015357 : my Value 2:
+015357 : 996
+015607 : Log out every 250 cycle
+015607 : my Value 1:
+015607 : 529
+015607 : my Value 2:
+015607 : 529
+015857 : Log out every 250 cycle
+015857 : my Value 1:
+015857 : 484
+015857 : my Value 2:
+015857 : 484
+015981 : DCM Diff(ns): Cur= -38245, Avg=   -654, Max= -73801
+016107 : Log out every 250 cycle
+016107 : my Value 1:
+016107 : 217
+016107 : my Value 2:
+016107 : 217
+016357 : Log out every 250 cycle
+016357 : my Value 1:
+016357 : 77
+016357 : my Value 2:
+016357 : 77
+016607 : Log out every 250 cycle
+016607 : my Value 1:
+016607 : 66
+016607 : my Value 2:
+016607 : 66
+016857 : Log out every 250 cycle
+016857 : my Value 1:
+016857 : 8
+016857 : my Value 2:
+016857 : 8
+016982 : ================================================================
+016982 : PerfMsmt 'JOB_ProcessAllRxFrames' (avg/max) [usec]:    9.6/ 18.9
+016982 : PerfMsmt 'JOB_SendAllCycFrames  ' (avg/max) [usec]:    5.7/ 16.2
+016982 : PerfMsmt 'JOB_MasterTimer       ' (avg/max) [usec]:    6.7/ 14.8
+016982 : PerfMsmt 'JOB_SendAcycFrames    ' (avg/max) [usec]:    0.7/ 11.5
+016982 : PerfMsmt 'Cycle Time            ' (avg/max) [usec]:  999.7/1074.0
+016982 : PerfMsmt 'myAppWorkPd           ' (avg/max) [usec]:    0.4/  5.3
+016982 : PerfMsmt 'Write DCM logfile     ' (avg/max) [usec]:    1.8/  5.9
+017107 : Log out every 250 cycle
+017107 : my Value 1:
+017107 : -57
+017107 : my Value 2:
+017107 : -57
+017357 : Log out every 250 cycle
+017357 : my Value 1:
+017357 : -106
+017357 : my Value 2:
+017357 : -106
+017607 : Log out every 250 cycle
+017607 : my Value 1:
+017607 : -100
+017607 : my Value 2:
+017607 : -100
+017857 : Log out every 250 cycle
+017857 : my Value 1:
+017857 : -24
+017857 : my Value 2:
+017857 : -24
+018107 : Log out every 250 cycle
+018107 : my Value 1:
+018107 : 61
+018107 : my Value 2:
+018107 : 61
+018357 : Log out every 250 cycle
+018357 : my Value 1:
+018357 : 357
+018357 : my Value 2:
+018357 : 357
+018607 : Log out every 250 cycle
+018607 : my Value 1:
+018607 : 543
+018607 : my Value 2:
+018607 : 543
+018857 : Log out every 250 cycle
+018857 : my Value 1:
+018857 : 532
+018857 : my Value 2:
+018857 : 532
+018983 : ================================================================
+018983 : PerfMsmt 'JOB_ProcessAllRxFrames' (avg/max) [usec]:    9.8/ 19.2
+018983 : PerfMsmt 'JOB_SendAllCycFrames  ' (avg/max) [usec]:    5.7/ 16.2
+018983 : PerfMsmt 'JOB_MasterTimer       ' (avg/max) [usec]:    6.9/ 14.8
+018983 : PerfMsmt 'JOB_SendAcycFrames    ' (avg/max) [usec]:    0.8/ 11.5
+018983 : PerfMsmt 'Cycle Time            ' (avg/max) [usec]:  999.7/1074.0
+018983 : PerfMsmt 'myAppWorkPd           ' (avg/max) [usec]:    0.4/  5.3
+018983 : PerfMsmt 'Write DCM logfile     ' (avg/max) [usec]:    1.8/  5.9
+019107 : Log out every 250 cycle
+019107 : my Value 1:
+019107 : 532
+019107 : my Value 2:
+019107 : 532
+019357 : Log out every 250 cycle
+019357 : my Value 1:
+019357 : 532
+019357 : my Value 2:
+019357 : 532
+019607 : Log out every 250 cycle
+019607 : my Value 1:
+019607 : 532
+019607 : my Value 2:
+019607 : 532
+019857 : Log out every 250 cycle
+019857 : my Value 1:
+019857 : 532
+019857 : my Value 2:
+019857 : 532
+020107 : Log out every 250 cycle
+020107 : my Value 1:
+020107 : 532
+020107 : my Value 2:
+020107 : 532
+020357 : Log out every 250 cycle
+020357 : my Value 1:
+020357 : 532
+020357 : my Value 2:
+020357 : 532
+020607 : Log out every 250 cycle
+020607 : my Value 1:
+020607 : 532
+020607 : my Value 2:
+020607 : 532
+020857 : Log out every 250 cycle
+020857 : my Value 1:
+020857 : 532
+020857 : my Value 2:
+020857 : 532
+020984 : ================================================================
+020984 : PerfMsmt 'JOB_ProcessAllRxFrames' (avg/max) [usec]:    9.5/ 19.2
+020984 : PerfMsmt 'JOB_SendAllCycFrames  ' (avg/max) [usec]:    5.6/ 16.2
+020984 : PerfMsmt 'JOB_MasterTimer       ' (avg/max) [usec]:    6.5/ 14.8
+020984 : PerfMsmt 'JOB_SendAcycFrames    ' (avg/max) [usec]:    0.7/ 11.5
+020984 : PerfMsmt 'Cycle Time            ' (avg/max) [usec]:  1000.0/1074.0
+020984 : PerfMsmt 'myAppWorkPd           ' (avg/max) [usec]:    0.4/  7.4
+020984 : PerfMsmt 'Write DCM logfile     ' (avg/max) [usec]:    1.7/  5.9
+020984 : DCM Diff(ns): Cur=   7116, Avg=   -397, Max= -73801
+021107 : Log out every 250 cycle
+021107 : my Value 1:
+021107 : 501
+021107 : my Value 2:
+021107 : 501
+021357 : Log out every 250 cycle
+021357 : my Value 1:
+021357 : 412
+021357 : my Value 2:
+021357 : 412
+021607 : Log out every 250 cycle
+021607 : my Value 1:
+021607 : 346
+021607 : my Value 2:
+021607 : 346
+021857 : Log out every 250 cycle
+021857 : my Value 1:
+021857 : 337
+021857 : my Value 2:
+021857 : 337
+022107 : Log out every 250 cycle
+022107 : my Value 1:
+022107 : 349
+022107 : my Value 2:
+022107 : 349
+022357 : Log out every 250 cycle
+022357 : my Value 1:
+022357 : 344
+022357 : my Value 2:
+022357 : 344
+022607 : Log out every 250 cycle
+022607 : my Value 1:
+022607 : 345
+022607 : my Value 2:
+022607 : 345
+022857 : Log out every 250 cycle
+022857 : my Value 1:
+022857 : 345
+022857 : my Value 2:
+022857 : 345
+022985 : ================================================================
+022985 : PerfMsmt 'JOB_ProcessAllRxFrames' (avg/max) [usec]:    9.5/ 19.2
+022985 : PerfMsmt 'JOB_SendAllCycFrames  ' (avg/max) [usec]:    5.7/ 16.2
+022985 : PerfMsmt 'JOB_MasterTimer       ' (avg/max) [usec]:    6.6/ 14.8
+022985 : PerfMsmt 'JOB_SendAcycFrames    ' (avg/max) [usec]:    0.7/ 11.5
+022985 : PerfMsmt 'Cycle Time            ' (avg/max) [usec]:  999.9/1074.0
+022985 : PerfMsmt 'myAppWorkPd           ' (avg/max) [usec]:    0.4/  7.4
+022985 : PerfMsmt 'Write DCM logfile     ' (avg/max) [usec]:    1.7/  5.9
+023107 : Log out every 250 cycle
+023107 : my Value 1:
+023107 : 345
+023107 : my Value 2:
+023107 : 345
+023357 : Log out every 250 cycle
+023357 : my Value 1:
+023357 : 345
+023357 : my Value 2:
+023357 : 345
+023607 : Log out every 250 cycle
+023607 : my Value 1:
+023607 : 345
+023607 : my Value 2:
+023607 : 345
+023857 : Log out every 250 cycle
+023857 : my Value 1:
+023857 : 345
+023857 : my Value 2:
+023857 : 345
+024107 : Log out every 250 cycle
+024107 : my Value 1:
+024107 : 345
+024107 : my Value 2:
+024107 : 345
+024357 : Log out every 250 cycle
+024357 : my Value 1:
+024357 : 345
+024357 : my Value 2:
+024357 : 345
+024607 : Log out every 250 cycle
+024607 : my Value 1:
+024607 : 345
+024607 : my Value 2:
+024607 : 345
+024857 : Log out every 250 cycle
+024857 : my Value 1:
+024857 : 345
+024857 : my Value 2:
+024857 : 345
+024875 : 
+024875 : Job times before shutdown
+024875 : ========================
+024875 : Shutdown EtherCAT Master
+024875 : ========================
+024887 : Master state changed from <OP> to <INIT>
+025954 : EcMasterDemoDc stop.

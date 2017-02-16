@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/mgehrig2/git_repos/EtherCAT/EcTest/main.cpp
+iostream
+-
+DCDemoMain.hpp
+-
+
+/home/mgehrig2/projects/023_MyEcMasterDemoDC_ClassA/install/include/DCDemoMain.hpp
+iostream
+-
+

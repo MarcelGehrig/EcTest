@@ -14,12 +14,18 @@
 # EXTERNAL cache entries
 ########################
 
+//No help, variable specified on the command line.
+ADDITIONAL_INCLUDE_DIRS:UNINITIALIZED=/home/mgehrig2/projects/020_EtherCAT/EC-Master-ClassA-AddOn-V2.9/Examples/EcMasterDemoDc;/home/mgehrig2/projects/020_EtherCAT/EC-Master-V2.9-Linux_x64-Eval/SDK/INC/Linux;/home/mgehrig2/projects/020_EtherCAT/EC-Master-V2.9-Linux_x64-Eval/SDK/INC;/home/mgehrig2/projects/020_EtherCAT/EC-Master-V2.9-Linux_x64-Eval/Sources/Common
+
+//No help, variable specified on the command line.
+ADDITIONAL_LINK_DIRS:UNINITIALIZED=/home/mgehrig2/projects/020_EtherCAT/EC-Master-V2.9-Linux_x64-Eval/SDK/LIB/Linux/x64
+
 //Path to a program.
 CMAKE_AR:FILEPATH=/usr/bin/ar
 
 //Choose the type of build, options are: None(CMAKE_CXX_FLAGS or
 // CMAKE_C_FLAGS used) Debug Release RelWithDebInfo MinSizeRel.
-CMAKE_BUILD_TYPE:STRING=Debug
+CMAKE_BUILD_TYPE:STRING=Release
 
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
@@ -81,7 +87,7 @@ CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=OFF
 
 //Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=/home/mgehrig2/projects/023_MyEcMasterDemoDC_ClassA/install
+CMAKE_INSTALL_PREFIX:PATH=/home/mgehrig2/git_repos/EtherCAT/EcTest/install
 
 //Path to a program.
 CMAKE_LINKER:FILEPATH=/usr/bin/ld

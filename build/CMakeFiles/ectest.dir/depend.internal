@@ -3,4 +3,7 @@
 
 CMakeFiles/ectest.dir/main.cpp.o
  /home/mgehrig2/git_repos/EtherCAT/EcTest/main.cpp
+ /home/mgehrig2/projects/020_EtherCAT/EC-Master-V2.9-Linux_x64-Eval/SDK/INC/EcOs.h
+ /home/mgehrig2/projects/020_EtherCAT/EC-Master-V2.9-Linux_x64-Eval/SDK/INC/EcType.h
+ /home/mgehrig2/projects/020_EtherCAT/EC-Master-V2.9-Linux_x64-Eval/SDK/INC/Linux/EcOsPlatform.h
  /home/mgehrig2/projects/023_MyEcMasterDemoDC_ClassA/install/include/DCDemoMain.hpp

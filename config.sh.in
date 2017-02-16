@@ -1,0 +1,20 @@
+#!/bin/bash
+
+script="$(readlink -f $0)"
+script_dir="$(dirname $script)"
+
+
+ec_master="/home/mgehrig2/projects/020_EtherCAT/EC-Master-V2.9-Linux_x64-Eval"
+ec_demo_dc="/home/mgehrig2/projects/020_EtherCAT/EC-Master-ClassA-AddOn-V2.9"
+
+build_dir="$script_dir/build"
+install_dir="$script_dir/install"
+include_dir="$ec_demo_dc/Examples/EcMasterDemoDc;$ec_master/SDK/INC/Linux;$ec_master/SDK/INC;$ec_master/Sources/Common"
+link_dir="$ec_master/SDK/LIB/Linux/x64"
+source_dir="$script_dir"
+
+
+
+eni_xml_path="$script_dir/*.xml"
+link_layer_lib_path="$ec_master/Bin/Linux/x64/libemllI8254x.so"
+

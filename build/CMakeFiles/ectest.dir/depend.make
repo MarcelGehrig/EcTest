@@ -5,5 +5,5 @@ CMakeFiles/ectest.dir/main.cpp.o: ../main.cpp
 CMakeFiles/ectest.dir/main.cpp.o: /home/mgehrig2/projects/020_EtherCAT/EC-Master-V2.9-Linux_x64-Eval/SDK/INC/EcOs.h
 CMakeFiles/ectest.dir/main.cpp.o: /home/mgehrig2/projects/020_EtherCAT/EC-Master-V2.9-Linux_x64-Eval/SDK/INC/EcType.h
 CMakeFiles/ectest.dir/main.cpp.o: /home/mgehrig2/projects/020_EtherCAT/EC-Master-V2.9-Linux_x64-Eval/SDK/INC/Linux/EcOsPlatform.h
-CMakeFiles/ectest.dir/main.cpp.o: /home/mgehrig2/projects/023_MyEcMasterDemoDC_ClassA/install/include/DCDemoMain.hpp
+CMakeFiles/ectest.dir/main.cpp.o: /home/mgehrig2/projects/023_MyEcMasterDemoDC_ClassA/install/include/EtherCATMain.hpp
 

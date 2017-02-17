@@ -3,11 +3,10 @@
 #include <signal.h>
 #include <thread>
 
-#include <DCDemoMain.hpp>
-#include <EcType.h>
-#include <EcOs.h>
+#include <EtherCATMain.hpp>
 //-f eni_1MAXON.xml -i8254x 1 1 -perf
 
+using namespace ethercat;
 
 int32_t encoder;
 EC_T_BYTE* pbyPDIn;
@@ -26,21 +25,19 @@ void callbackFct(EC_T_BYTE* pbyPDInPtr)
 int main(int argc, char **argv) {
 	void (*callbackFctPtr)(EC_T_BYTE*);
 	callbackFctPtr = &callbackFct;
-	std::thread t1(mainEtherCAT, argc, argv, callbackFctPtr);
+	EtherCATMain etherCATStack(argc, argv, callbackFctPtr);
 	
-// 	sleep(5);
-	while ( DCDemoIsRunning() ) {
-		
+	
+	while ( etherCATStack.isRunning() ) {
 		
 		if (pbyPDIn) encoder = EC_GET_FRM_DWORD( pbyPDIn + 0 );	//test for NULL-pointer
-		else std::cout << "nullpointer" << std::endl;
-		std::cout << "Encoder: " << encoder << std::endl;
-// 		std::cout << "Encoder: " << std::endl;
-		sleep(1);
 		
+		std::cout << "Encoder: " << encoder << std::endl;
+		
+		sleep(1);
 	}
-	t1.join();
-	std::cout << "hallo" << std::endl;
+	
+	etherCATStack.join();
 	
     return 0;
 }

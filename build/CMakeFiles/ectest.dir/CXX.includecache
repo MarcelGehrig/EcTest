@@ -15,11 +15,7 @@ signal.h
 -
 thread
 -
-DCDemoMain.hpp
--
-EcType.h
--
-EcOs.h
+EtherCATMain.hpp
 -
 
 /home/mgehrig2/projects/020_EtherCAT/EC-Master-V2.9-Linux_x64-Eval/SDK/INC/EcOs.h
@@ -68,7 +64,7 @@ netinet/in.h
 netinet/tcp.h
 -
 
-/home/mgehrig2/projects/023_MyEcMasterDemoDC_ClassA/install/include/DCDemoMain.hpp
+/home/mgehrig2/projects/023_MyEcMasterDemoDC_ClassA/install/include/EtherCATMain.hpp
 iostream
 -
 thread
@@ -84,5 +80,7 @@ mutex
 condition_variable
 -
 EcType.h
+-
+EcOs.h
 -
 

@@ -12,32 +12,31 @@ int32_t encoder;
 EC_T_BYTE* pbyPDIn;
 
 
-void callbackFct(EC_T_BYTE* pbyPDInPtr)
+void callbackFct(EC_T_BYTE* pbyPDInPtr, EC_T_BYTE* pbyPDOut)
 {
-	pbyPDIn = pbyPDInPtr;
+pbyPDIn = pbyPDInPtr;
 // 	encoder = EC_GET_FRM_DWORD( pbyPDIn + 0 );
-	
-	// lese position von pointer und schreibe in globale variable von main
+
+// lese position von pointer und schreibe in globale variable von main
 }
 
 
 
 int main(int argc, char **argv) {
-	void (*callbackFctPtr)(EC_T_BYTE*);
-	callbackFctPtr = &callbackFct;
-	EtherCATMain etherCATStack(argc, argv, callbackFctPtr);
-	
-	
-	while ( etherCATStack.isRunning() ) {
-		
-		if (pbyPDIn) encoder = EC_GET_FRM_DWORD( pbyPDIn + 0 );	//test for NULL-pointer
-		
-		std::cout << "Encoder: " << encoder << std::endl;
-		
-		sleep(1);
-	}
-	
-	etherCATStack.join();
-	
-    return 0;
+
+EtherCATMain etherCATStack(argc, argv, &callbackFct);
+
+
+while ( etherCATStack.isRunning() ) {
+
+if (pbyPDIn) encoder = EC_GET_FRM_DWORD( pbyPDIn + 0 );	//test for NULL-pointer
+
+std::cout << "Encoder: " << encoder << std::endl;
+
+sleep(1);
+}
+
+etherCATStack.join();
+
+return 0;
 }

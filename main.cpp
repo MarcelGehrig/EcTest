@@ -10,15 +10,27 @@
 using namespace ethercat;
 
 
+bool manualMode = false;
+
+bool threadFinishd = false;
 int32_t encoder;
 EC_T_BYTE* pbyPDIn;
 EC_T_BYTE* pbyPDOut;
 EtherCATMain* etherCATStack;
 
 
+void setOutputControlWord( uint16_t word );
+
 static void SignalHandler( int nSignal )
 {
+	setOutputControlWord(0x0);
+	sleep(0.1);
     etherCATStack->stop();
+	sleep(2);
+	if ( !threadFinishd ) {
+		std::cout << "std::terminate()" << std::endl;
+		std::terminate();
+	}
 }
 
 
@@ -107,38 +119,76 @@ int main(int argc, char **argv) {
 	while ( !pbyPDIn ) sleep (1);
 	while ( EC_GET_FRM_WORD( pbyPDIn + 0 )==0 ) sleep(1);	//wait for valid data
 	
-	
-	std::cout << "Status1:         0x" << std::hex << getStatus() << std::endl;
-	setOutputControlWord(0xf);					//reset fault
-	setOutputControlWord(0x80);					//reset fault
-	sleep(0.1);
-	setOutputControlWord(0x0);
-	sleep(0.1);
-	
-	setModeOfeOperation(1);
-	setOutputControlWord(0x6);					//shutdown command
-	while ( getStatus()!=0x231 ) sleep(0.1);	//wait for "ready to switch on"
-	setProfileAcceleration(10000);
-	setProfileDeceleration(10000);
-	setProfileVelocity(10000);
-	setTargetPosition(10000);
-	
-	setOutputControlWord(0x7);					//switch ON commad
-	std::cout << "switch ON commad sent" << std::endl;
-	while ( getStatus()!=0x233 ) sleep(0.1);	//wait for "switched on"
-	setOutputControlWord(0x3f);					//enable operation commad
-	
-	while ( etherCATStack->isRunning() ) {
-		std::cout << "Status:         0x" << std::hex << getStatus() << std::endl;
-		std::cout << "ModeOfOp:         " << getModeOfOp() << std::endl;
-		std::cout << "PosDemadValue:    " << getPosDemadValue() << std::endl;
-		std::cout << "PosActValue:      " << getPosActValue() << std::endl;
-		std::cout << std::endl;
+	if ( !manualMode ) {
+		std::cout << "Status1:         0x" << std::hex << getStatus() << std::endl;
+		setOutputControlWord(0x80);					//reset fault
+		sleep(1.0);
+		std::cout << "Status2:         0x" << std::hex << getStatus() << std::endl;
+		sleep(0.1);
+		setOutputControlWord(0x0);
+		sleep(1.0);
+		std::cout << "Status3:         0x" << std::hex << getStatus() << std::endl;
+		sleep(0.1);
+		
+		setModeOfeOperation(1);
+		setOutputControlWord(0x6);					//shutdown command
+		while ( getStatus()!=0x231 ) sleep(0.1);	//wait for "ready to switch on"
+		setProfileAcceleration(50000);
+		setProfileDeceleration(50000);
+		setProfileVelocity(50000);
+// 		setTargetPosition(10000);
+		
+		setOutputControlWord(0x7);					//switch ON commad
+		std::cout << "switch ON commad sent" << std::endl;
+		while ( getStatus()!=0x233 ) sleep(0.1);	//wait for "switched on"
+// 		setOutputControlWord(0x3f);					//enable operation commad
+		
+		int loopCounter = 0;
+		while ( etherCATStack->isRunning() ) {
+			std::cout << "Status:         0x" << std::hex << getStatus() << std::endl;
+			std::cout << "ModeOfOp:         " << getModeOfOp() << std::endl;
+			std::cout << "PosDemadValue:    " << getPosDemadValue() << std::endl;
+			std::cout << "PosActValue:      " << getPosActValue() << std::endl;
+			std::cout << std::endl;
 
-		sleep(1);
+			if ( loopCounter%4 == 1 ) {
+				std::cout << std::endl << "setPosition to 5000" << std::endl << std::endl;
+			std::cout << "Status1:         0x" << std::hex << getStatus() << std::endl;
+				if (loopCounter != 1) while ( getStatus() != 0x0637 ) sleep(0.01);
+			std::cout << "Status2:         0x" << std::hex << getStatus() << std::endl;
+				setTargetPosition(5000);		//1.) send new data
+			std::cout << "Status3:         0x" << std::hex << getStatus() << std::endl;
+				setOutputControlWord(0x3f);		//1.) new set point, set immediately
+			std::cout << "Status4:         0x" << std::hex << getStatus() << std::endl;
+				while ( getStatus() != 0x1637 ) sleep(0.01);	//2.) waits till drive set-point acknowledge
+			std::cout << "Status5:         0x" << std::hex << getStatus() << std::endl;
+				setOutputControlWord(0x2f);		//3.) start motion by reset "new set point"
+			std::cout << "Status6:         0x" << std::hex << getStatus() << std::endl;
+			}
+
+			if ( loopCounter%4 == 3 ) {
+				std::cout << std::endl << "setPosition to -5000" << std::endl << std::endl;
+				while ( getStatus() != 0x0637 ) sleep(0.01);
+				setTargetPosition(-5000);		//1.) send new data
+				setOutputControlWord(0x3f);		//1.) new set point, set immediately
+				while ( getStatus() != 0x1637 ) sleep(0.01);	//2.) waits till drive set-point acknowledge
+				setOutputControlWord(0x2f);		//3.) start motion by reset "new set point"
+			}
+			
+			sleep(1);
+			loopCounter++;
+		}
 	}
+	else {		//manual mode
+		
+		
+	}
+	
+	
+	
 
 	etherCATStack->join();
-
+	threadFinishd = true;
+	
 	return 0;
 }

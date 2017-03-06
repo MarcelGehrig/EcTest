@@ -116,6 +116,10 @@ int main(int argc, char **argv) {
 	etherCATStack = &eCATStack;
 
 	
+	//timekeeping stuff
+	typedef std::chrono::steady_clock clock;	
+	
+	
 	while ( !pbyPDIn ) sleep (1);
 	while ( EC_GET_FRM_WORD( pbyPDIn + 0 )==0 ) sleep(1);	//wait for valid data
 	
@@ -153,25 +157,34 @@ int main(int argc, char **argv) {
 
 			if ( loopCounter%4 == 1 ) {
 				std::cout << std::endl << "setPosition to 5000" << std::endl << std::endl;
-			std::cout << "Status1:         0x" << std::hex << getStatus() << std::endl;
+			std::cout << "Status1:                             0x" << std::hex << getStatus() << std::endl;
 				if (loopCounter != 1) while ( getStatus() != 0x0637 ) sleep(0.01);
-			std::cout << "Status2:         0x" << std::hex << getStatus() << std::endl;
+			std::cout << "Status2: getStatus() != 0x0637       0x" << std::hex << getStatus() << std::endl;
 				setTargetPosition(5000);		//1.) send new data
-			std::cout << "Status3:         0x" << std::hex << getStatus() << std::endl;
+			std::cout << "Status3: setTargetPosition(5000)     0x" << std::hex << getStatus() << std::endl;
 				setOutputControlWord(0x3f);		//1.) new set point, set immediately
-			std::cout << "Status4:         0x" << std::hex << getStatus() << std::endl;
+			std::cout << "Status4: setOutputControlWord(0x3f)  0x" << std::hex << getStatus() << std::endl;
 				while ( getStatus() != 0x1637 ) sleep(0.01);	//2.) waits till drive set-point acknowledge
-			std::cout << "Status5:         0x" << std::hex << getStatus() << std::endl;
+			std::cout << "Status5: getStatus() != 0x1637 0x" << std::hex << getStatus() << std::endl;
 				setOutputControlWord(0x2f);		//3.) start motion by reset "new set point"
-			std::cout << "Status6:         0x" << std::hex << getStatus() << std::endl;
+			std::cout << "Status6: setOutputControlWord(0x2f)  0x" << std::hex << getStatus() << std::endl;
 			}
 
 			if ( loopCounter%4 == 3 ) {
 				std::cout << std::endl << "setPosition to -5000" << std::endl << std::endl;
 				while ( getStatus() != 0x0637 ) sleep(0.01);
+// 				std::this_thread::sleep_for(std::chrono::milliseconds(4000));
 				setTargetPosition(-5000);		//1.) send new data
 				setOutputControlWord(0x3f);		//1.) new set point, set immediately
-				while ( getStatus() != 0x1637 ) sleep(0.01);	//2.) waits till drive set-point acknowledge
+				
+				auto start = clock::now();
+// 				while ( getStatus() != 0x1637 ) sleep(0.01);	//2.) waits till drive set-point acknowledge
+				while ( getStatus() != 0x1637 ) std::this_thread::sleep_for(std::chrono::nanoseconds(1));	//2.) waits till drive set-point acknowledge
+				auto stop = clock::now();
+// 				std::chrono::duration<double, std::nano> durationCasted = stop - start;
+				std::chrono::duration<double, std::milli> durationCasted = stop - start;
+				std::cout << "Duration: 'setOutputControlWord(0x3f);	'" << durationCasted.count() << " millisec" << std::endl;
+				
 				setOutputControlWord(0x2f);		//3.) start motion by reset "new set point"
 			}
 			

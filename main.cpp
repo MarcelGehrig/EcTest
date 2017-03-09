@@ -12,6 +12,7 @@ using namespace ethercat;
 
 bool manualMode = false;
 
+bool go = false;
 bool threadFinishd = false;
 int32_t encoder;
 EC_T_BYTE* pbyPDIn;
@@ -126,6 +127,7 @@ void callbackFct(EC_T_BYTE* pbyPDInPtr, EC_T_BYTE* pbyPDOutPtr)
 {
 	pbyPDIn = pbyPDInPtr;
 	pbyPDOut = pbyPDOutPtr;
+	go = true;
 	// 	encoder = EC_GET_FRM_DWORD( pbyPDIn + 0 );
 	
 	// lese position von pointer und schreibe in globale variable von main
@@ -157,6 +159,9 @@ int main(int argc, char **argv) {
 		std::cout << "Status3:         0x" << std::hex << getStatus() << std::endl;
 		sleep(0.1);
 		
+		//get slave
+// 		EC_T_DWORD mySlave = ecatGetSlaveId(1001);
+		
 		setModeOfeOperation(3);						//1 pos. 3 vel. 4 torque
 		setOutputControlWord(0x6);					//shutdown command
 // 		while ( getStatus()!=0x231 ) sleep(0.1);	//wait for "ready to switch on"
@@ -178,6 +183,8 @@ int main(int argc, char **argv) {
 		int loopCounter = 0;
 		while ( etherCATStack->isRunning() ) {
 			
+			while ( !go ) std::this_thread::sleep_for(std::chrono::microseconds(10));
+			
 			if ( (loopCounter % 500) == 0 ) {
 				std::cout << "loopCounter:      " << loopCounter << std::endl;
 				std::cout << "Status:         0x" << std::hex << getStatus() << std::endl;
@@ -196,6 +203,7 @@ int main(int argc, char **argv) {
 			if ( increaseVel )	setVel = setVel + 100;
 			else				setVel = setVel - 100;
 // 			setVel = 300000;
+//  			setVel = 0;
 			setTargetVelocity(setVel);
 			
 // 			if ( loopCounter%4 == 1 ) {

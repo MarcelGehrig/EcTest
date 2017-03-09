@@ -190,12 +190,12 @@ int main(int argc, char **argv) {
 				std::cout << std::endl;
 			}
 
-			if ( setVel >= 15000 ) increaseVel = false;
-			if ( setVel <= -15000 ) increaseVel = true;
+			if ( setVel >= 280000 ) increaseVel = false;
+			if ( setVel <= -280000 ) increaseVel = true;
 			
-			if ( increaseVel )	setVel = setVel + 5;
-			else				setVel = setVel - 5;
-			
+			if ( increaseVel )	setVel = setVel + 100;
+			else				setVel = setVel - 100;
+// 			setVel = 300000;
 			setTargetVelocity(setVel);
 			
 // 			if ( loopCounter%4 == 1 ) {

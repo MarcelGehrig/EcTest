@@ -19,6 +19,13 @@ EC_T_BYTE* pbyPDIn;
 EC_T_BYTE* pbyPDOut;
 EtherCATMain* etherCATStack;
 
+//timekeeping stuff
+typedef std::chrono::steady_clock clockSteady;
+auto stopCallBackFct = clockSteady::now();
+auto startCallBackFct = clockSteady::now();
+std::chrono::duration<double, std::milli> durationCallBackFct;
+std::chrono::duration<double, std::milli> durationCallBackFctMax;
+
 
 void setOutputControlWord( uint16_t word );
 
@@ -104,33 +111,27 @@ void setTargetVelocity ( int32_t targetVel )
 	EC_SETDWORD(pbyPDOut+10, targetVel);
 }
 
-// void setProfileVelocity( uint32_t profileVelocity )
-// {
-// 	EC_SETDWORD(pbyPDOut+8, profileVelocity);
-// }
-// 
-// void setProfileAcceleration( uint32_t profileAcceleration )
-// {
-// 	EC_SETDWORD(pbyPDOut+12, profileAcceleration);
-// }
-// 
-// void setProfileDeceleration( uint32_t profileDeceleration )
-// {
-// 	EC_SETDWORD(pbyPDOut+16, profileDeceleration);
-// }
-
-
 
 
 
 void callbackFct(EC_T_BYTE* pbyPDInPtr, EC_T_BYTE* pbyPDOutPtr)
 {
+	static bool firstCall = true;
+	if ( firstCall ) {
+		startCallBackFct = clockSteady::now();
+		firstCall = false;
+	}
+	stopCallBackFct = clockSteady::now();
+	durationCallBackFct = stopCallBackFct - startCallBackFct;
+	startCallBackFct = clockSteady::now();
+	
 	pbyPDIn = pbyPDInPtr;
 	pbyPDOut = pbyPDOutPtr;
 	go = true;
 	// 	encoder = EC_GET_FRM_DWORD( pbyPDIn + 0 );
 	
 	// lese position von pointer und schreibe in globale variable von main
+	if ( durationCallBackFct > durationCallBackFctMax ) durationCallBackFctMax = durationCallBackFct;
 }
 
 
@@ -139,10 +140,6 @@ int main(int argc, char **argv) {
 
 	EtherCATMain eCATStack(argc, argv, &callbackFct);
 	etherCATStack = &eCATStack;
-
-	
-	//timekeeping stuff
-	typedef std::chrono::steady_clock clock;	
 	
 	
 	while ( !pbyPDIn ) sleep (1);
@@ -181,13 +178,24 @@ int main(int argc, char **argv) {
 		int32_t setVel = 0;
 		bool increaseVel = true;
 		int loopCounter = 0;
+		auto stop = clockSteady::now();
+		auto start = clockSteady::now();
+		std::chrono::duration<double, std::milli> durationCastedMax;
 		while ( etherCATStack->isRunning() ) {
 			
 			while ( !go ) std::this_thread::sleep_for(std::chrono::microseconds(10));
+			go = false;
+			stop = clockSteady::now();
+			std::chrono::duration<double, std::milli> durationCasted = stop - start;
+			if (durationCasted > durationCastedMax) durationCastedMax = durationCasted;
+			start = clockSteady::now();
 			
 			if ( (loopCounter % 500) == 0 ) {
 				std::cout << "loopCounter:      " << loopCounter << std::endl;
-				std::cout << "Status:         0x" << std::hex << getStatus() << std::endl;
+				std::cout << "Cycletime CBFct:  " << durationCallBackFct.count() << std::endl;
+				std::cout << "Cycletime:        " << durationCasted.count() << std::endl;
+				std::cout << "Cycletime max:    " << durationCastedMax.count() << std::endl;
+				std::cout << "Status:           0x" << std::hex << getStatus() << std::endl;
 	// 			std::cout << "ModeOfOp:         " << getModeOfOp() << std::endl;
 	// 			std::cout << "PosDemadValue:    " << getPosDemadValue() << std::endl;
 				std::cout << "PosActValue:      " << std::dec << getPosActValue() << std::endl;
@@ -195,13 +203,15 @@ int main(int argc, char **argv) {
 				std::cout << "VelActValue:      " << getVelActValue() << std::endl;
 				std::cout << "TorqueActValue:   " << getTorqueActValue() << std::endl;
 				std::cout << std::endl;
+				durationCastedMax = durationCasted;
+				durationCallBackFctMax = durationCallBackFct;
 			}
 
-			if ( setVel >= 280000 ) increaseVel = false;
-			if ( setVel <= -280000 ) increaseVel = true;
+			if ( setVel >= 2800 ) increaseVel = false;
+			if ( setVel <= -2800 ) increaseVel = true;
 			
-			if ( increaseVel )	setVel = setVel + 100;
-			else				setVel = setVel - 100;
+			if ( increaseVel )	setVel = setVel + 1;
+			else				setVel = setVel - 1;
 // 			setVel = 300000;
 //  			setVel = 0;
 			setTargetVelocity(setVel);
@@ -228,10 +238,10 @@ int main(int argc, char **argv) {
 // 				setTargetPosition(-5000);		//1.) send new data
 // 				setOutputControlWord(0x3f);		//1.) new set point, set immediately
 // 				
-// 				auto start = clock::now();
+// 				auto start = clockSteady::now();
 // // 				while ( getStatus() != 0x1637 ) sleep(0.01);	//2.) waits till drive set-point acknowledge
 // 				while ( getStatus() != 0x1637 ) std::this_thread::sleep_for(std::chrono::nanoseconds(1));	//2.) waits till drive set-point acknowledge
-// 				auto stop = clock::now();
+// 				auto stop = clockSteady::now();
 // // 				std::chrono::duration<double, std::nano> durationCasted = stop - start;
 // 				std::chrono::duration<double, std::milli> durationCasted = stop - start;
 // 				std::cout << "Duration: 'setOutputControlWord(0x3f);	'" << durationCasted.count() << " millisec" << std::endl;
